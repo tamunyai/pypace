@@ -1,0 +1,30 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Log files
+*.log
+
+# Virtual environments (if used)
+venv/
+.env/
+
+# Temporary or backup files
+*.swp
+*.bak
+*.tmp
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Custom files (you may add more specific files/folders you don't want to track)
+*.iml
+
