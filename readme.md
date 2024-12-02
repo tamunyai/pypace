@@ -66,6 +66,10 @@ The base directory is configurable by changing the `base_directory` argument whe
 
 The saga and arc structure is predefined in the script, but you can modify the `_get_sagas_with_arcs` method to suit custom projects or different naming conventions.
 
+## License
+
+This project is open-source and free to use, modify, and distribute under the [MIT License](license).
+
 ## Disclaimer
 
 This script is a utility tool for organizing files related to the **OnePace** fan project, which is an unofficial recut of the **One Piece** anime. This is not affiliated with the official creators of **One Piece** or **OnePace**.
