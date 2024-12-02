@@ -44,12 +44,12 @@ The script organizes the files into a structure like this:
 ```bash
 <base_directory>
 ├── 01 - East Blue Saga
-│   ├── 01 - Romance Dawn Arc
-│   ├── 02 - Orange Town Arc
+│   ├── 011 - Romance Dawn Arc
+│   ├── 012 - Orange Town Arc
 │   └── ...
 ├── 02 - Arabasta Saga
-│   ├── 01 - Reverse Mountain Arc
-│   ├── 02 - Whisky Peak Arc
+│   ├── 021 - Reverse Mountain Arc
+│   ├── 022 - Whisky Peak Arc
 │   └── ...
 └── ...
 ```
