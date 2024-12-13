@@ -1,29 +1,36 @@
-# Python bytecode files
+# Bytecode files
 __pycache__/
 *.pyc
 *.pyo
 
-# Log files
-*.log
-
-# Virtual environments (if used)
+# Virtual environments
 venv/
 .env/
 
-# Temporary or backup files
+# Log and temporary files
+*.log
 *.swp
 *.bak
 *.tmp
 
-# MacOS specific
+# System-specific files
 .DS_Store
-
-# Windows specific
 Thumbs.db
 
-# IDEs
+# IDE and editor files
 .vscode/
 .idea/
-
-# Custom files (you may add more specific files/folders you don't want to track)
 *.iml
+
+# Test-related files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Application-specific
+instance/
