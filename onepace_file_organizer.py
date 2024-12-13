@@ -22,7 +22,8 @@ class OnePaceFileOrganizer:
         """
         Initializes the file organizer with the specified base directory and predefined saga and arc structure.
 
-        :param base_directory: The directory where OnePace files are stored (default: current directory).
+        Args:
+            base_directory (str, optional): The directory where OnePace files are stored (default: current directory).
         """
         self.base_directory = Path(base_directory)
         self.one_pace_files = self._get_one_pace_files()
@@ -33,7 +34,8 @@ class OnePaceFileOrganizer:
         """
         Retrieves all files in the base directory that are related to OnePace, identified by '[One Pace]' in the filename.
 
-        :return: A list of Path objects representing the OnePace files found in the base directory.
+        Returns:
+            list[Path] :A list of Path objects representing the OnePace files found in the base directory.
         """
         return [
             file
@@ -45,7 +47,8 @@ class OnePaceFileOrganizer:
         """
         Returns a dictionary mapping each saga to its corresponding arcs in the OnePiece series.
 
-        :return: A dictionary where the keys are saga names (e.g., "East Blue Saga") and the values are lists of arc names.
+        Returns:
+            dict[str, list[str]]: A dictionary where the keys are saga names (e.g., "East Blue Saga") and the values are lists of arc names.
         """
         return {
             "East Blue Saga": [
@@ -85,11 +88,12 @@ class OnePaceFileOrganizer:
             "Final Saga": ["EggHead Arc", "Elbaph Arc"],
         }
 
-    def _organize_files_by_arc(self):
+    def _organize_files_by_arc(self) -> dict[str, list[Path]]:
         """
         Organizes OnePace files by arc names, associating each arc with the relevant files in the base directory.
 
-        :return: A dictionary where keys are arc names (without "Arc" suffix) and values are lists of files for each arc.
+        Returns:
+            dict[str, list[Path]]: A dictionary where keys are arc names (without "Arc" suffix) and values are lists of files for each arc.
         """
         files_by_arc = {}
         for file in self.one_pace_files:
@@ -113,7 +117,8 @@ class OnePaceFileOrganizer:
         """
         Creates a directory if it doesn't already exist.
 
-        :param directory: The path to the directory to be created if it doesn't exist.
+        Args:
+            directory (Path): The path to the directory to be created if it doesn't exist.
         """
         if not directory.exists():
             logging.info(f"{CYAN}Creating directory: {directory}{RESET_COLOR}")
@@ -123,9 +128,12 @@ class OnePaceFileOrganizer:
         """
         Attempts to move a file from source to destination.
 
-        :param source_path: The source file path.
-        :param destination_path: The destination path where the file will be moved.
-        :return: True if the file was moved successfully, False otherwise.
+        Args:
+            source_path (Path): The source file path.
+            destination_path (Path): The destination path where the file will be moved.
+
+        Returns:
+            bool: True if the file was moved successfully, False otherwise.
         """
         try:
             if destination_path.exists():
@@ -138,6 +146,7 @@ class OnePaceFileOrganizer:
             move(source_path, destination_path)
             logging.info(f"{GREEN}Moved: {destination_path}{RESET_COLOR}")
             return True
+
         except Exception as e:
             logging.error(f"{RED}Error moving {source_path.name}: {e}{RESET_COLOR}")
             return False
@@ -148,11 +157,14 @@ class OnePaceFileOrganizer:
         """
         Organizes the files associated with a specific arc by moving them into the correct directory.
 
-        :param saga_index: The index of the saga in the overall series.
-        :param saga_name: The name of the saga (e.g., "East Blue Saga").
-        :param arc_index: The index of the arc within the saga.
-        :param arc_name: The name of the arc (e.g., "Romance Dawn Arc").
-        :return: The number of files successfully moved for this arc.
+        Args:
+            saga_index (int): The index of the saga in the overall series.
+            saga_name (int): The name of the saga (e.g., "East Blue Saga").
+            arc_index (int): The index of the arc within the saga.
+            arc_name (int): The name of the arc (e.g., "Romance Dawn Arc").
+
+        Returns:
+            int: The number of files successfully moved for this arc.
         """
         arc_name_without_suffix = sub(r" Arc$", "", arc_name)
         saga_directory = self.base_directory / f"{saga_index:02} - {saga_name}"
