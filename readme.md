@@ -1,40 +1,68 @@
-# OnePace File Organizer
+# Pypace - OnePace File Organizer
 
-The **OnePace File Organizer** is a Python script designed to organize [OnePace](https://onepace.net) files within a user-specified directory. **OnePace** is a fan project that recuts the **One Piece** anime to align more closely with the pacing of the original manga by Eiichiro Oda. This tool sorts the files based on their respective saga and arc, according to the structure defined in the [One Piece Wiki](https://onepiece.fandom.com/wiki/Story_Arcs).
+**Pypace** is a Python command-line tool designed to organize [OnePace](https://onepace.net) files within a user-specified directory. **OnePace** is a fan project that recuts the **One Piece** anime to align more closely with the pacing of the original manga by Eiichiro Oda. This tool sorts the files based on their respective saga and arc, according to the structure defined in the [One Piece Wiki](https://onepiece.fandom.com/wiki/Story_Arcs).
 
 ## Features
 
-- Automatically organizes OnePace files into directories based on saga and arc names.
+- Automatically organizes **OnePace** files into directories based on saga and arc names.
 - Creates a directory structure that mirrors the sagas and arcs of the **One Piece** anime series.
 - Logs progress with color-coded messages indicating the status of file movements (e.g., success, warnings).
 - Skips files that already exist in the destination directory to prevent overwriting.
+- Command-line interface for easier usage.
+- Supports "dry-run" mode to preview file movements without making changes.
+- Resets files to their original location if needed.
 
 ## Requirements
 
 - Python 3.6 or higher.
 - The script assumes that OnePace files are named with the string "[One Pace]" to identify them.
-- The required `shutil`, `logging`, `pathlib`, and `re` modules (all standard in Python) are used.
+- The required Python libraries:
+  - `colorama` (for colored output)
+  - `pytest` and `pytest-mock` (for testing)
+  - `shutil`, `logging`, `pathlib`, and `re` modules (all standard in Python) are used.
+
+To install all dependencies, run:
+
+```bash
+pip install -r requirements.txt
+```
+
+Alternatively, you can install `pypace` via pip if you have already set up the package:
+
+```bash
+pip install pypace
+```
 
 ## Installation
 
 1. Download or clone this repository to your local machine.
-2. Navigate to the directory containing the script.
-3. Ensure that your OnePace files are located in the base directory (by default, the current directory).
+2. Navigate to the directory containing the project.
+3. Install dependencies via pip (make sure Python 3.6+ is installed):
+
+```bash
+pip install .
+```
 
 ## Usage
 
-### Running the Script
+### Command-Line Interface (CLI)
 
-To run the script, use the following command:
+To run the tool from the command line, use the following command:
 
 ```bash
-python3 onepace_file_organizer.py
+pypace /path/to/your/directory
 ```
 
-By default, the script will organize files in the current directory. If you want to specify a different directory, pass the path to the directory as an argument when initializing the `OnePaceFileOrganizer` class:
+You can also specify the --dry-run option to preview the file movements without making actual changes:
 
-```python
-organizer = OnePaceFileOrganizer(base_directory="path/to/your/directory")
+```bash
+pypace /path/to/your/directory --dry-run
+```
+
+If you need to reset the file organization to their original locations, use the --reset option:
+
+```bash
+pypace /path/to/your/directory --reset
 ```
 
 ### Directory Structure
@@ -56,15 +84,50 @@ The script organizes the files into a structure like this:
 
 Each saga and arc is given a numbered prefix to ensure proper sorting.
 
-## Customization
+### Customization
 
-### Base Directory
+- **Base Directory**: The directory where the OnePace files are located can be specified when running the CLI tool. This is provided as an argument when running the `pypace` command.
+- **Sagas and Arcs**: The predefined sagas and arcs (from the One Piece anime) are included in the tool, but you can modify the list of sagas and arcs in the script if you'd like to tailor the tool for a custom collection.
 
-The base directory is configurable by changing the `base_directory` argument when initializing the `OnePaceFileOrganizer` object.
+### Example Usage in Python
 
-### Saga and Arc Structure
+You can also use `pypace` directly in Python code like this:
 
-The saga and arc structure is predefined in the script, but you can modify the `_get_sagas_with_arcs` method to suit custom projects or different naming conventions.
+```python
+from pypace import organize_files
+
+organize_files("/path/to/your/directory", dry_run=True)
+```
+
+### Resetting Files
+
+If you want to reset the file organization back to their original location, you can use the --reset flag:
+
+```bash
+pypace /path/to/your/directory --reset
+```
+
+This will restore the files to their original location within the base directory.
+
+## Testing
+
+This project comes with a set of unit tests to ensure proper functionality, using `pytest` and `pytest-mock` for mocking dependencies and verifying the tool’s behavior.
+
+### Running Tests
+
+To run the tests:
+
+```bash
+pytest
+```
+
+Make sure the necessary dependencies are installed first:
+
+```bash
+pip install pytest pytest-mock
+```
+
+Tests are located in the `tests` directory, which includes tests for individual components, such as file organization, CLI functionality, and the episode handling logic.
 
 ## License
 
