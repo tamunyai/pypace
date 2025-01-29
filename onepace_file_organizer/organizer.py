@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import logging
 from pathlib import Path
 from re import IGNORECASE, escape, search, sub
@@ -202,8 +200,3 @@ class OnePaceFileOrganizer:
         logging.info(f"Starting file organization in '{self.base_directory.resolve()}'")
         self.organize_files()
         logging.info(f"File organization completed.")
-
-
-if __name__ == "__main__":
-    organizer = OnePaceFileOrganizer()
-    organizer.run()
