@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onepace_file_organizer"
+version = "0.1.0"
+description = "A CLI tool to organize One Pace files into sagas and arcs."
+authors = [ { name = "Thendo A Munyai", email = "Amonmunyai11@gmail.com" } ]
+license = { text = "MIT" }
+readme = "readme.md"
+dependencies = []
+
+[project.scripts]
+onepace-organizer = "onepace_file_organizer.cli:main"
