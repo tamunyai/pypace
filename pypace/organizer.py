@@ -113,3 +113,5 @@ def reset(directory: Path, dry_run: bool):
             shutil.move(file, target_path)
 
         logging.info(f"{Fore.BLUE}Reset:{Style.RESET_ALL} {file} → {target_path}")
+
+    logging.info(f"{Fore.BLUE}Reset completed. All files moved back to {directory}")
