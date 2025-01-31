@@ -15,6 +15,19 @@ logging.basicConfig(
 )
 
 
+def is_one_pace_file(file: Path) -> bool:
+    """
+    Check if a given file is a One Pace episode.
+
+    Args:
+        file (Path): The file to check.
+
+    Returns:
+        bool: True if the file is a One Pace episode, False otherwise.
+    """
+    return file.is_file() and "[One Pace]" in file.stem
+
+
 def organize_files(directory: Path, dry_run: bool):
     """
     Organizes One Pace episodes into their respective saga and arc folders.
@@ -39,7 +52,7 @@ def organize_files(directory: Path, dry_run: bool):
     }
 
     for file in directory.rglob("*"):
-        if not (file.is_file() and "[One Pace]" in file.stem):
+        if not is_one_pace_file(file):
             continue
 
         try:
@@ -92,7 +105,7 @@ def reset(directory: Path, dry_run: bool):
         dry_run (bool): If True, only logs actions without making changes.
     """
     for file in directory.rglob("*"):
-        if not (file.is_file() and "[One Pace]" in file.stem):
+        if not is_one_pace_file(file):
             continue
 
         target_path = directory / file.name
