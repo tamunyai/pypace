@@ -16,6 +16,13 @@ logging.basicConfig(
 
 
 def organize_files(directory: Path, dry_run: bool):
+    """
+    Organizes One Pace episodes into their respective saga and arc folders.
+
+    Args:
+        directory (Path): The root directory containing the episodes.
+        dry_run (bool): If True, only logs actions without making changes.
+    """
     if not directory.is_dir():
         logging.error(f"{Fore.RED}Invalid directory:{Style.RESET_ALL} {directory}")
         return
@@ -77,6 +84,13 @@ def organize_files(directory: Path, dry_run: bool):
 
 
 def reset(directory: Path, dry_run: bool):
+    """
+    Moves all One Pace episodes back to the root directory.
+
+    Args:
+        directory (Path): The root directory containing the episodes.
+        dry_run (bool): If True, only logs actions without making changes.
+    """
     for file in directory.rglob("*"):
         if not (file.is_file() and "[One Pace]" in file.stem):
             continue

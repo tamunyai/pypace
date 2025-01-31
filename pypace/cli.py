@@ -7,6 +7,17 @@ from .organizer import organize_files, reset
 
 
 def main():
+    """
+    Main entry point for the One Pace file organizer.
+
+    Parses command-line arguments to either organize One Pace files
+    into sagas and arcs or reset them back to the root directory.
+
+    Arguments:
+        directory (str): The directory containing One Pace files.
+        --dry-run (flag): If set, preview changes without making modifications.
+        --reset (flag): If set, move all files back to the root directory.
+    """
     parser = argparse.ArgumentParser(
         description="Organize One Pace files into sagas and arcs."
     )

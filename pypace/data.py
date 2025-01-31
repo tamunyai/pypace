@@ -1,3 +1,17 @@
+"""
+Defines the list of One Piece sagas and their corresponding arcs.
+
+Each saga consists of multiple arcs, and each arc has a defined chapter range 
+that represents the part of the manga it covers.
+
+This data structure is used to organize One Pace episode files based on 
+their corresponding saga and arc.
+
+Attributes:
+    SAGAS_WITH_ARCS (List[Saga]): A list of all One Piece sagas, 
+    each containing multiple arcs with chapter ranges.
+"""
+
 from .models import Arc, Saga
 
 SAGAS_WITH_ARCS = [
