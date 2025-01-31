@@ -83,7 +83,7 @@ SAGAS_WITH_ARCS = [
     Saga(
         name="Wano Country",
         arcs=[
-            Arc(name="Wano Country", chapters=(909, 1057)),
+            Arc(name="Wano Country", aliases=["Wano"], chapters=(909, 1057)),
         ],
     ),
     Saga(
