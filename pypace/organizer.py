@@ -36,13 +36,9 @@ def organize_files(directory: Path, dry_run: bool):
         directory (Path): The root directory containing the episodes.
         dry_run (bool): If True, only logs actions without making changes.
     """
-    if not directory.is_dir():
+    if not (directory.is_dir() or directory.exists()):
         logging.error(f"{Fore.RED}Invalid directory:{Style.RESET_ALL} {directory}")
         return
-
-    # if not directory.exists():
-    #     logging.error(f"{Fore.RED}Invalid directory:{Style.RESET_ALL} {directory}")
-    #     return
 
     arc_lookup = {
         arc_name: arc
