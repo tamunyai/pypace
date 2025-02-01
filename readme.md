@@ -15,22 +15,21 @@
 ## Requirements
 
 - Python 3.6 or higher.
-- The script assumes that OnePace files are named with the string "[One Pace]" to identify them.
+- The script assumes that OnePace files are named with the string "[One Pace]" to identify them. For example, a typical file name might look like: `[One Pace][823-824] Whole Cake Island 01 [720p][En Sub][288B1802].mp4`. Currently, it requires an exact match and does not support variations in naming conventions.
 - The required Python libraries:
   - `colorama` (for colored output)
-  - `pytest` and `pytest-mock` (for testing)
   - `shutil`, `logging`, `pathlib`, and `re` modules (all standard in Python) are used.
 
-To install all dependencies, run:
+To install the dependencies, run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Alternatively, you can install `pypace` via pip if you have already set up the package:
+For development dependencies, including testing tools, install:
 
 ```bash
-pip install pypace
+pip install -r requirements_dev.txt
 ```
 
 ## Installation
@@ -82,7 +81,7 @@ The script organizes the files into a structure like this:
 └── ...
 ```
 
-Each saga and arc is given a numbered prefix to ensure proper sorting.
+Each saga and arc is given a numbered prefix to ensure proper sorting. This numbering format is fixed and follows the predefined saga and arc order, but users can modify it in the script if needed.
 
 ### Customization
 
@@ -124,7 +123,7 @@ pytest
 Make sure the necessary dependencies are installed first:
 
 ```bash
-pip install pytest pytest-mock
+pip install -r requirements_dev.txt
 ```
 
 Tests are located in the `tests` directory, which includes tests for individual components, such as file organization, CLI functionality, and the episode handling logic.
@@ -135,4 +134,4 @@ This project is open-source and free to use, modify, and distribute under the [M
 
 ## Disclaimer
 
-This script is a utility tool for organizing files related to the **OnePace** fan project, which is an unofficial recut of the **One Piece** anime. This is not affiliated with the official creators of **One Piece** or **OnePace**.
+This script is a utility tool for organizing files related to the **OnePace** fan project, which is an unofficial recut of the **One Piece** anime. It does not distribute or modify actual video files but simply organizes existing files on the user's system. This is not affiliated with the official creators of **One Piece** or **OnePace**.
